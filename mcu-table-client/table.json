@@ -1,0 +1,319 @@
+[{
+  "depart": "大學部",
+  "subjectId": "00122",
+  "subjectName": "體育（貳）",
+  "classId": "36101",
+  "className": "資工一甲",
+  "maxPeople": 75,
+  "nowPeople": 56,
+  "teacher": ["廖偉智"],
+  "time": [{
+    "day": 1,
+    "sec": [5, 6]
+  }],
+  "site": ["體育"],
+  "type": "必修",
+  "credit": 0,
+  "note": ""
+}, {
+  "depart": "大學部",
+  "subjectId": "00997",
+  "subjectName": "班會",
+  "classId": "36101",
+  "className": "資工一甲",
+  "maxPeople": 70,
+  "nowPeople": 57,
+  "teacher": ["謝育平"],
+  "time": [{
+    "day": 3,
+    "sec": [20]
+  }],
+  "site": ["EE511"],
+  "type": "必修",
+  "credit": 0,
+  "note": ""
+}, {
+  "depart": "大學部",
+  "subjectId": "00999",
+  "subjectName": "週會",
+  "classId": "36101",
+  "className": "資工一甲",
+  "maxPeople": 70,
+  "nowPeople": 57,
+  "teacher": [],
+  "time": [{
+    "day": 5,
+    "sec": [5]
+  }],
+  "site": [""],
+  "type": "必修",
+  "credit": 0,
+  "note": ""
+}, {
+  "depart": "大學部",
+  "subjectId": "36103",
+  "subjectName": "離散數學",
+  "classId": "36101",
+  "className": "資工一甲",
+  "maxPeople": 75,
+  "nowPeople": 57,
+  "teacher": ["蘇民揚"],
+  "time": [{
+    "day": 2,
+    "sec": [5, 6, 7]
+  }],
+  "site": ["S102"],
+  "type": "必修",
+  "credit": 3,
+  "note": ""
+}, {
+  "depart": "大學部",
+  "subjectId": "36104",
+  "subjectName": "程式設計（二）",
+  "classId": "36101",
+  "className": "資工一甲",
+  "maxPeople": 75,
+  "nowPeople": 57,
+  "teacher": ["陳怡安", "謝育平"],
+  "time": [{
+    "day": 2,
+    "sec": [2, 3, 4]
+  }, {
+    "day": 5,
+    "sec": [2, 3, 4]
+  }],
+  "site": ["S304"],
+  "type": "必修",
+  "credit": 3,
+  "note": ""
+}, {
+  "depart": "大學部",
+  "subjectId": "36106",
+  "subjectName": "數位邏輯設計",
+  "classId": "36101",
+  "className": "資工一甲",
+  "maxPeople": 75,
+  "nowPeople": 57,
+  "teacher": ["陳游利"],
+  "time": [{
+    "day": 2,
+    "sec": [8, 9, 40]
+  }],
+  "site": ["S102"],
+  "type": "必修",
+  "credit": 3,
+  "note": ""
+}, {
+  "depart": "大學部",
+  "subjectId": "36111",
+  "subjectName": "數位邏輯實驗",
+  "classId": "36101",
+  "className": "資工一甲",
+  "maxPeople": 64,
+  "nowPeople": 57,
+  "teacher": ["陳游利"],
+  "time": [{
+    "day": 3,
+    "sec": [7, 8, 9]
+  }],
+  "site": ["AA202"],
+  "type": "必修",
+  "credit": 1,
+  "note": ""
+}, {
+  "depart": "大學部",
+  "subjectId": "36114",
+  "subjectName": "微積分（二）",
+  "classId": "36101",
+  "className": "資工一甲",
+  "maxPeople": 70,
+  "nowPeople": 56,
+  "teacher": ["黎育麟", "李遠坤"],
+  "time": [{
+    "day": 1,
+    "sec": [3]
+  }, {
+    "day": 3,
+    "sec": [2, 3, 4]
+  }],
+  "site": ["S109", "EE511"],
+  "type": "必修",
+  "credit": 3,
+  "note": ""
+}, {
+  "depart": "大學部",
+  "subjectId": "00122",
+  "subjectName": "體育（貳）",
+  "classId": "36102",
+  "className": "資工一乙",
+  "maxPeople": 75,
+  "nowPeople": 54,
+  "teacher": ["賴賜文"],
+  "time": [{
+    "day": 5,
+    "sec": [1, 2]
+  }],
+  "site": ["體育"],
+  "type": "必修",
+  "credit": 0,
+  "note": ""
+}, {
+  "depart": "大學部",
+  "subjectId": "00997",
+  "subjectName": "班會",
+  "classId": "36102",
+  "className": "資工一乙",
+  "maxPeople": 70,
+  "nowPeople": 54,
+  "teacher": ["李遠坤"],
+  "time": [{
+    "day": 2,
+    "sec": [8]
+  }],
+  "site": ["EE511"],
+  "type": "必修",
+  "credit": 0,
+  "note": ""
+}, {
+  "depart": "大學部",
+  "subjectId": "00999",
+  "subjectName": "週會",
+  "classId": "36102",
+  "className": "資工一乙",
+  "maxPeople": 70,
+  "nowPeople": 54,
+  "teacher": [],
+  "time": [{
+    "day": 5,
+    "sec": [5]
+  }],
+  "site": [""],
+  "type": "必修",
+  "credit": 0,
+  "note": ""
+}, {
+  "depart": "大學部",
+  "subjectId": "36103",
+  "subjectName": "離散數學",
+  "classId": "36102",
+  "className": "資工一乙",
+  "maxPeople": 75,
+  "nowPeople": 54,
+  "teacher": ["蘇民揚"],
+  "time": [{
+    "day": 3,
+    "sec": [5, 6, 7]
+  }],
+  "site": ["S213"],
+  "type": "必修",
+  "credit": 3,
+  "note": ""
+}, {
+  "depart": "大學部",
+  "subjectId": "36104",
+  "subjectName": "程式設計（二）",
+  "classId": "36102",
+  "className": "資工一乙",
+  "maxPeople": 75,
+  "nowPeople": 54,
+  "teacher": ["高頫驊", "何祖鳳"],
+  "time": [{
+    "day": 3,
+    "sec": [2, 3, 4]
+  }, {
+    "day": 1,
+    "sec": [6, 7, 8]
+  }],
+  "site": ["S304", "S210"],
+  "type": "必修",
+  "credit": 3,
+  "note": ""
+}, {
+  "depart": "大學部",
+  "subjectId": "36106",
+  "subjectName": "數位邏輯設計",
+  "classId": "36102",
+  "className": "資工一乙",
+  "maxPeople": 70,
+  "nowPeople": 54,
+  "teacher": ["趙和昌"],
+  "time": [{
+    "day": 2,
+    "sec": [2, 3, 4]
+  }],
+  "site": ["EE511"],
+  "type": "必修",
+  "credit": 3,
+  "note": ""
+}, {
+  "depart": "大學部",
+  "subjectId": "36111",
+  "subjectName": "數位邏輯實驗",
+  "classId": "36102",
+  "className": "資工一乙",
+  "maxPeople": 64,
+  "nowPeople": 54,
+  "teacher": ["趙和昌"],
+  "time": [{
+    "day": 5,
+    "sec": [6, 7, 8]
+  }],
+  "site": ["AA202"],
+  "type": "必修",
+  "credit": 1,
+  "note": ""
+}, {
+  "depart": "大學部",
+  "subjectId": "36114",
+  "subjectName": "微積分（二）",
+  "classId": "36102",
+  "className": "資工一乙",
+  "maxPeople": 70,
+  "nowPeople": 54,
+  "teacher": ["黎育麟", "李遠坤"],
+  "time": [{
+    "day": 1,
+    "sec": [2]
+  }, {
+    "day": 2,
+    "sec": [5, 6, 7]
+  }],
+  "site": ["S109", "EE511"],
+  "type": "必修",
+  "credit": 3,
+  "note": ""
+}, {
+  "depart": "碩士班",
+  "subjectId": "36552",
+  "subjectName": "軟體工程",
+  "classId": "36141",
+  "className": "資工系研一",
+  "maxPeople": 30,
+  "nowPeople": 11,
+  "teacher": ["何祖鳳"],
+  "time": [{
+    "day": 3,
+    "sec": [5, 6, 7]
+  }],
+  "site": ["S401"],
+  "type": "必修",
+  "credit": 3,
+  "note": ""
+}, {
+  "depart": "碩士班",
+  "subjectId": "45102",
+  "subjectName": "論文研討（二）",
+  "classId": "36141",
+  "className": "資工系研一",
+  "maxPeople": 30,
+  "nowPeople": 10,
+  "teacher": ["黃世育"],
+  "time": [{
+    "day": 5,
+    "sec": [6, 7]
+  }],
+  "site": ["S401"],
+  "type": "必修",
+  "credit": 2,
+  "note": ""
+}]
