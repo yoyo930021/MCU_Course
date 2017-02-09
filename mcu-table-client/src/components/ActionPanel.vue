@@ -1,6 +1,6 @@
 <template>
   <div id='ActionPanel'>
-    <v-tabs id="tabs" grow>
+    <v-tabs id="tabs"  grow>
       <v-tabs-tabs>
         <v-tab-item :item="{ text: '已選課程', href: '#tabs-1' }" ripple></v-tab-item>
         <v-tab-item :item="{ text: '加入課程', href: '#tabs-2' }" ripple></v-tab-item>
@@ -96,7 +96,12 @@
                 </list-item>
               </course-list>
               <br>
-              <v-btn block v-ripple="{ class: 'white--text' }" success>分享</v-btn>
+              <v-btn block v-ripple="{ class: 'white--text' }" success @click.native="share" :loading="disabled">分享</v-btn>
+              <br>
+              <div v-if="token!=''">
+                <label for="text">分享網址:</label>
+                <input type="text" id="share" :value="urlToken" style="width: 80%;">
+              </div>
             </v-card-text>
           </v-card>
         </v-tabs-item>
@@ -121,6 +126,8 @@
         filter: true,
         note: false,
         loading: false,
+        disabled: false,
+        token: "",
         typeOptions: [
           {
             value: "my",
@@ -191,8 +198,6 @@
       },
       diffList: function () {
         var self = this;
-        console.log(self.$store.state.loginCourse)
-        console.log(self.choosedList)
         var loginList = self.$store.state.loginCourse.filter((element) => { return (self.choosedList.indexOf(element) == -1) });
         var choose = self.choosedList.filter((element) => { return (self.$store.state.loginCourse.indexOf(element) == -1) })
         var result = {
@@ -200,6 +205,9 @@
           add: choose
         }
         return result;
+      },
+      urlToken:function () {
+        return 'http://localhost:8080/token/'+this.token;
       }
     },
     methods: {
@@ -263,6 +271,16 @@
             })
           }
         }
+      },
+      share(){
+        this.disabled = true;
+        api.postShare(this.choosedList).then((response)=>{
+          this.token = response.data.token;
+          this.disabled = false;
+        }).catch((error) => {
+          this.disabled = false;
+          this.$vuetify.toast.create(...["請求失敗，請檢查網路狀態。", "bottom"])
+        })
       }
     }
   }

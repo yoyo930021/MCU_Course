@@ -16,7 +16,7 @@ router.get('/:token', function (req, res, next) {
 });
 
 router.post('/',function(req, res, next) {
-    share.saveCourses(req.body).then((token)=>{
+    share.saveCourses(req.body.body).then((token)=>{
         res.status(200).json({token:token})
     }).catch((error) => {
         console.log(error)

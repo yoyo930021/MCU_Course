@@ -4,6 +4,7 @@ import store from '../store'
 
 import Choose from '../views/Choose.vue'
 import Start from '../views/Start.vue'
+import Share from '../views/Share.vue'
 
 Vue.use(Router)
 
@@ -24,5 +25,10 @@ export default new Router({
         next({ path: '/' })
       }
     }
-  }]
+  },
+  {
+    path: '/token/:token',
+    component: Share,
+  }
+  ]
 })

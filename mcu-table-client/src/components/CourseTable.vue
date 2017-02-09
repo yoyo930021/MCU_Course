@@ -12,9 +12,11 @@
             <v-container fluid>
               <v-row>
                 <div :class="grid(course.length,item.site)" v-for="item in course">
-                  {{item.id}}<br> {{item.name}}
-                  <br> {{item.teacher}}
-                  <br> {{item.site}}
+                  <p class="pa-0 ma-0">
+                    {{item.id}}<br> {{item.name}}
+                    <br> {{item.teacher}}
+                    <br> {{item.site}}
+                  </p>
                 </div>
               </v-row>
             </v-container>
@@ -98,18 +100,21 @@
   .cell {
     display: table-cell;
     width: 13%;
+    min-width: 50px;
     border: 1px solid #eaeaea;
     background: #fff;
-    font-size: 1vh;
+    font-size: 0.5vh;
     text-overflow: ellipsis;
     overflow: hidden;
     word-wrap: break-word;
     white-space: nowrap;
   }
   
+  
   .week-cell {
     display: table-cell;
     width: 12.5%;
+    min-width: 50px;
     border: 1px solid #eaeaea;
     background: #00bcd4;
     color: #fff;
@@ -118,6 +123,7 @@
   .sec-cell {
     display: table-cell;
     width: 9%;
+    min-width: 50px;
     border: 1px solid #eaeaea;
     background: #00bcd4;
     color: #fff;

@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import * as api from '../api/axios.js'
 
 Vue.use(Vuex)
 
@@ -8,11 +9,16 @@ export default new Vuex.Store({
     login: false,
     ggdb:1,
     loginCourse: [],
-    choosedList:[]
+    choosedList:[],
+    shareTable: []
   },
 
   actions: {
-
+    FETCH_SHARE ({ commit, state },token) {
+      return api.getShareCourse(token).then((response)=>{
+        commit("setShare",JSON.parse(response.data))
+      })
+    },
   },
 
   mutations: {
@@ -31,6 +37,9 @@ export default new Vuex.Store({
     },
     removeChoosed(state,index){
       state.choosedList.splice(index,1)
+    },
+    setShare(state,data){
+      state.shareTable = data;
     }
   }
 })

@@ -1,4 +1,5 @@
 import axios from 'axios'
+import querystring from 'querystring';
 
 const defaults = {
   baseURL: 'http://localhost:3000/'
@@ -29,7 +30,7 @@ export const getShareCourse = (share) => {
 }
 export const postShare = (courses) => {
   var data = querystring.stringify({
-    params: JSON.stringify(courses)
+    body: JSON.stringify(courses)
   });
   return axios.post("/share/", data);
 }

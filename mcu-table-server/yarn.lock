@@ -505,6 +505,10 @@ jodid25519@^1.0.0:
   dependencies:
     jsbn "~0.1.0"
 
+js-sha256@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/js-sha256/-/js-sha256-0.5.0.tgz#438d17a71718bb3dfe00534a48b712b57303985f"
+
 jsbn@~0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/jsbn/-/jsbn-0.1.0.tgz#650987da0dd74f4ebf5a11377a2aa2d273e97dfd"
