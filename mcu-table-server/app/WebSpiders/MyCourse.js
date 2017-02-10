@@ -9,6 +9,8 @@ var j = request.jar()
 
 var get = function (ggdb, account, password) {
     return new Promise(function (resolve, reject) {
+        console.log(account)
+        console.log(password)
         var login = {
             url: "http://www.mcu.edu.tw/student/new-query/Chk_Pass_New_v1.asp",
             jar: j,
