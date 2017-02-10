@@ -108,6 +108,8 @@
     overflow: hidden;
     word-wrap: break-word;
     white-space: nowrap;
+
+    -webkit-text-size-adjust:100%;
   }
   
   

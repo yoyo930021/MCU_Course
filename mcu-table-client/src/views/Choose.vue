@@ -2,6 +2,11 @@
   <div id='choose'>
     <v-container fluid>
       <v-row>
+        <v-col xs12>
+          <v-alert info  dismissible  v-model="alert">左邊為目前已選課表，右邊為操作區，在已選課程可以刪除已選課程，在加入課程可以加入課程，勾選過濾衝堂課程會自動移除跟現有課程所衝堂的課程，結果頁籤會顯示相比原本課表所加選或退選的課程，請依照此表搶課，下面分享能產生一個網址，把課表分享給別人看。注意：課表只會保存一年</v-alert>
+        </v-col>
+      </v-row>
+      <v-row>
         <v-col md6 xs12>
           <v-card class="ma-0">
             <v-card-text>
@@ -25,8 +30,16 @@
     name: 'choose',
     data() {
       return {
-        choosedList: this.$store.state.choosedList
+        choosedList: this.$store.state.choosedList,
+        alert:true
       }
+    },
+    mounted () {
+      window.onbeforeunload = function(e) {
+        var dialogText = '如果重新整理或關閉，你所選的就會消失，請確認是否關閉？';
+        e.returnValue = dialogText;
+        return dialogText;
+      };
     },
     computed: {
       choosedTable: function () {

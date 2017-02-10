@@ -53,7 +53,7 @@
                     <label for="text">分享網址:</label>
                   </v-col>
                   <v-col xs8>
-                    <input type="text" id="share" :value="urlToken" style="width: 100%;">
+                    <input type="text" id="share" :value="urlToken" style="width: 100%;" onMouseOver="this.focus()" onFocus="this.select()" >
                   </v-col>
                   <v-col xs2>
                     <iframe :src="facebook" width="52" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
