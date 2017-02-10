@@ -8,21 +8,16 @@ var j = request.jar()
 
 var getMustOptine = function (ggdb) {
     return new Promise(function (resolve, reject) {
-        var choose = {
-            url: "http://www.mcu.edu.tw/student/new-query/sel-query/query_menu.asp?gdb=" + ggdb,
+        var cookie = request.cookie('ggdb='+ggdb);
+        var url = 'http://www.mcu.edu.tw/student/new-query/sel-query/';
+        j.setCookie(cookie, url);
+        var result = {
+            url: "http://www.mcu.edu.tw/student/new-query/sel-query/query_2_up.asp",
             jar: j,
             encoding: "binary",
             followAllRedirects: true
         }
-        request.getAsync(choose).then(function (res) {
-            var result = {
-                url: "http://www.mcu.edu.tw/student/new-query/sel-query/query_2_up.asp",
-                jar: j,
-                encoding: "binary",
-                followAllRedirects: true
-            }
-            return request.getAsync(result);
-        }).then(function (res) {
+        request.getAsync(result).then(function (res) {
             var $ = cheerio.load(iconv.decode(new Buffer(res.body, "binary"), "Big5"));
             resolve(parser($));
         }).catch(function (error) {
@@ -33,21 +28,16 @@ var getMustOptine = function (ggdb) {
 
 var getChooseOptine = function (ggdb) {
     return new Promise(function (resolve, reject) {
-        var choose = {
-            url: "http://www.mcu.edu.tw/student/new-query/sel-query/query_menu.asp?gdb=" + ggdb,
-            jar: j,
-            encoding: "binary",
-            followAllRedirects: true
-        }
-        request.getAsync(choose).then(function (res) {
+        var cookie = request.cookie('ggdb='+ggdb);
+        var url = 'http://www.mcu.edu.tw/student/new-query/sel-query/';
+        j.setCookie(cookie, url);
             var result = {
                 url: "http://www.mcu.edu.tw/student/new-query/sel-query/query_3_up.asp",
                 jar: j,
                 encoding: "binary",
                 followAllRedirects: true
             }
-            return request.getAsync(result);
-        }).then(function (res) {
+        request.getAsync(result).then(function (res) {
             var $ = cheerio.load(iconv.decode(new Buffer(res.body, "binary"), "Big5"));
             resolve(parser($));
         }).catch(function (error) {
@@ -58,21 +48,16 @@ var getChooseOptine = function (ggdb) {
 
 var getCommonOptine = function (ggdb) {
     return new Promise(function (resolve, reject) {
-        var choose = {
-            url: "http://www.mcu.edu.tw/student/new-query/sel-query/query_menu.asp?gdb=" + ggdb,
+        var cookie = request.cookie('ggdb='+ggdb);
+        var url = 'http://www.mcu.edu.tw/student/new-query/sel-query/';
+        j.setCookie(cookie, url);
+        var result = {
+            url: "http://www.mcu.edu.tw/student/new-query/sel-query/query_4_up.asp",
             jar: j,
             encoding: "binary",
             followAllRedirects: true
         }
-        request.getAsync(choose).then(function (res) {
-            var result = {
-                url: "http://www.mcu.edu.tw/student/new-query/sel-query/query_4_up.asp",
-                jar: j,
-                encoding: "binary",
-                followAllRedirects: true
-            }
-            return request.getAsync(result);
-        }).then(function (res) {
+        request.getAsync(result).then(function (res) {
             var $ = cheerio.load(iconv.decode(new Buffer(res.body, "binary"), "Big5"));
             resolve(parser($));
         }).catch(function (error) {
@@ -83,21 +68,16 @@ var getCommonOptine = function (ggdb) {
 
 var getTeachOptine = function (ggdb) {
     return new Promise(function (resolve, reject) {
-        var choose = {
-            url: "http://www.mcu.edu.tw/student/new-query/sel-query/query_menu.asp?gdb=" + ggdb,
+        var cookie = request.cookie('ggdb='+ggdb);
+        var url = 'http://www.mcu.edu.tw/student/new-query/sel-query/';
+        j.setCookie(cookie, url);
+        var result = {
+            url: "http://www.mcu.edu.tw/student/new-query/sel-query/query_5_up.asp",
             jar: j,
             encoding: "binary",
             followAllRedirects: true
         }
-        request.getAsync(choose).then(function (res) {
-            var result = {
-                url: "http://www.mcu.edu.tw/student/new-query/sel-query/query_5_up.asp",
-                jar: j,
-                encoding: "binary",
-                followAllRedirects: true
-            }
-            return request.getAsync(result);
-        }).then(function (res) {
+        request.getAsync(result).then(function (res) {
             var $ = cheerio.load(iconv.decode(new Buffer(res.body, "binary"), "Big5"));
             resolve(parser($));
         }).catch(function (error) {
@@ -108,21 +88,16 @@ var getTeachOptine = function (ggdb) {
 
 var getSportOptine = function (ggdb) {
     return new Promise(function (resolve, reject) {
-        var choose = {
-            url: "http://www.mcu.edu.tw/student/new-query/sel-query/query_menu.asp?gdb=" + ggdb,
+        var cookie = request.cookie('ggdb='+ggdb);
+        var url = 'http://www.mcu.edu.tw/student/new-query/sel-query/';
+        j.setCookie(cookie, url);
+        var result = {
+            url: "http://www.mcu.edu.tw/student/new-query/sel-query/query_10_up.asp",
             jar: j,
             encoding: "binary",
             followAllRedirects: true
         }
-        request.getAsync(choose).then(function (res) {
-            var result = {
-                url: "http://www.mcu.edu.tw/student/new-query/sel-query/query_10_up.asp",
-                jar: j,
-                encoding: "binary",
-                followAllRedirects: true
-            }
-            return request.getAsync(result);
-        }).then(function (res) {
+        request.getAsync(result).then(function (res) {
             var $ = cheerio.load(iconv.decode(new Buffer(res.body, "binary"), "Big5"));
             resolve(parser($));
         }).catch(function (error) {

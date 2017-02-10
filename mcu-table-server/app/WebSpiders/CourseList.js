@@ -8,25 +8,20 @@ var j = request.jar()
 
 var getMustList = function (ggdb, dept, yr) {
     return new Promise(function (resolve, reject) {
-        var choose = {
-            url: "http://www.mcu.edu.tw/student/new-query/sel-query/query_menu.asp?gdb=" + ggdb,
+        var cookie = request.cookie('ggdb='+ggdb);
+        var url = 'http://www.mcu.edu.tw/student/new-query/sel-query/';
+        j.setCookie(cookie, url);
+        var result = {
+            url: "http://www.mcu.edu.tw/student/new-query/sel-query/query_2_1.asp",
+            form: {
+                "dept": dept,
+                "yr": yr
+            },
             jar: j,
             encoding: "binary",
             followAllRedirects: true
         }
-        request.getAsync(choose).then(function (res) {
-            var result = {
-                url: "http://www.mcu.edu.tw/student/new-query/sel-query/query_2_1.asp",
-                form: {
-                    "dept": dept,
-                    "yr": yr
-                },
-                jar: j,
-                encoding: "binary",
-                followAllRedirects: true
-            }
-            return request.postAsync(result);
-        }).then(function (res) {
+        request.postAsync(result).then(function (res) {
             var $ = cheerio.load(iconv.decode(new Buffer(res.body, "binary"), "Big5"));
             resolve(parser($));
         }).catch(function (error) {
@@ -37,25 +32,20 @@ var getMustList = function (ggdb, dept, yr) {
 
 var getChooseList = function (ggdb, dept, yr) {
     return new Promise(function (resolve, reject) {
-        var choose = {
-            url: "http://www.mcu.edu.tw/student/new-query/sel-query/query_menu.asp?gdb=" + ggdb,
+        var cookie = request.cookie('ggdb='+ggdb);
+        var url = 'http://www.mcu.edu.tw/student/new-query/sel-query/';
+        j.setCookie(cookie, url);
+        var result = {
+            url: "http://www.mcu.edu.tw/student/new-query/sel-query/query_3_1.asp",
+            form: {
+                "dept": dept,
+                "yr": yr
+            },
             jar: j,
             encoding: "binary",
             followAllRedirects: true
         }
-        request.getAsync(choose).then(function (res) {
-            var result = {
-                url: "http://www.mcu.edu.tw/student/new-query/sel-query/query_3_1.asp",
-                form: {
-                    "dept": dept,
-                    "yr": yr
-                },
-                jar: j,
-                encoding: "binary",
-                followAllRedirects: true
-            }
-            return request.postAsync(result);
-        }).then(function (res) {
+        request.postAsync(result).then(function (res) {
             var $ = cheerio.load(iconv.decode(new Buffer(res.body, "binary"), "Big5"));
             resolve(parser($));
         }).catch(function (error) {
@@ -66,24 +56,19 @@ var getChooseList = function (ggdb, dept, yr) {
 
 var getCommonList = function (ggdb, sch) {
     return new Promise(function (resolve, reject) {
-        var choose = {
-            url: "http://www.mcu.edu.tw/student/new-query/sel-query/query_menu.asp?gdb=" + ggdb,
+        var cookie = request.cookie('ggdb='+ggdb);
+        var url = 'http://www.mcu.edu.tw/student/new-query/sel-query/';
+        j.setCookie(cookie, url);
+        var result = {
+            url: "http://www.mcu.edu.tw/student/new-query/sel-query/query_4_1.asp",
+            form: {
+                "sch": sch
+            },
             jar: j,
             encoding: "binary",
             followAllRedirects: true
         }
-        request.getAsync(choose).then(function (res) {
-            var result = {
-                url: "http://www.mcu.edu.tw/student/new-query/sel-query/query_4_1.asp",
-                form: {
-                    "sch": sch
-                },
-                jar: j,
-                encoding: "binary",
-                followAllRedirects: true
-            }
-            return request.postAsync(result);
-        }).then(function (res) {
+        request.postAsync(result).then(function (res) {
             var $ = cheerio.load(iconv.decode(new Buffer(res.body, "binary"), "Big5"));
             resolve(parser($));
         }).catch(function (error) {
@@ -94,13 +79,9 @@ var getCommonList = function (ggdb, sch) {
 
 var getTeachList = function (ggdb, sch) {
     return new Promise(function (resolve, reject) {
-        var choose = {
-            url: "http://www.mcu.edu.tw/student/new-query/sel-query/query_menu.asp?gdb=" + ggdb,
-            jar: j,
-            encoding: "binary",
-            followAllRedirects: true
-        }
-        request.getAsync(choose).then(function (res) {
+        var cookie = request.cookie('ggdb='+ggdb);
+        var url = 'http://www.mcu.edu.tw/student/new-query/sel-query/';
+        j.setCookie(cookie, url);
             var result = {
                 url: "http://www.mcu.edu.tw/student/new-query/sel-query/query_5_1.asp",
                 form: {
@@ -110,8 +91,7 @@ var getTeachList = function (ggdb, sch) {
                 encoding: "binary",
                 followAllRedirects: true
             }
-            return request.postAsync(result);
-        }).then(function (res) {
+        request.postAsync(result).then(function (res) {
             var $ = cheerio.load(iconv.decode(new Buffer(res.body, "binary"), "Big5"));
             resolve(parser($));
         }).catch(function (error) {
@@ -122,30 +102,55 @@ var getTeachList = function (ggdb, sch) {
 
 var getSportList = function (ggdb, sch) {
     return new Promise(function (resolve, reject) {
-        var choose = {
-            url: "http://www.mcu.edu.tw/student/new-query/sel-query/query_menu.asp?gdb=" + ggdb,
+        var cookie = request.cookie('ggdb='+ggdb);
+        var url = 'http://www.mcu.edu.tw/student/new-query/sel-query/';
+        j.setCookie(cookie, url);
+        var result = {
+            url: "http://www.mcu.edu.tw/student/new-query/sel-query/query_10_1.asp",
+            form: {
+                "sch": sch
+            },
             jar: j,
             encoding: "binary",
             followAllRedirects: true
         }
-        request.getAsync(choose).then(function (res) {
-            var result = {
-                url: "http://www.mcu.edu.tw/student/new-query/sel-query/query_10_1.asp",
-                form: {
-                    "sch": sch
-                },
-                jar: j,
-                encoding: "binary",
-                followAllRedirects: true
-            }
-            return request.postAsync(result);
-        }).then(function (res) {
+        request.postAsync(result).then(function (res) {
             var $ = cheerio.load(iconv.decode(new Buffer(res.body, "binary"), "Big5"));
             resolve(parser($));
         }).catch(function (error) {
             reject(error);
         })
     });
+}
+
+var getSearchList =  function (ggdb,subject) {
+    return new Promise(function (resolve, reject){
+        var cookie = request.cookie('ggdb='+ggdb);
+        var url = 'http://www.mcu.edu.tw/student/new-query/sel-query/';
+        j.setCookie(cookie, url);
+
+        var formData = "sch=&dept1=&yr1=&dept2=&yr2=&dept3=&yr3=&sel=&courna="+urlencode(subject,"Big5")+"&teana=&wk1=&ssec1=&esec1=&wk2=&ssec2=&esec2=&wk3=&ssec3=&esec3=&wk4=&ssec4=&esec4=";
+        var contentLength = formData.length;
+
+        var result = {
+            url: "http://www.mcu.edu.tw/student/new-query/sel-query/qslist_1.asp",
+            headers: {
+                'Content-Length': contentLength,
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            jar: j,
+            encoding: "binary",
+            body: formData,
+            followAllRedirects: true,
+        }
+        request.postAsync(result).then(function (res) {
+            //console.log(iconv.decode(new Buffer(res.body, "binary"), "Big5"))
+            let $ = cheerio.load(iconv.decode(new Buffer(res.body, "binary"), "Big5"));
+            resolve(parser($))
+        }).catch(function (error) {
+            reject(error);
+        })
+    })
 }
 
 var parser = function ($) {
@@ -221,5 +226,6 @@ module.exports = {
     getChooseList: getChooseList,
     getCommonList: getCommonList,
     getTeachList: getTeachList,
-    getSportList: getSportList
+    getSportList: getSportList,
+    getSearchList: getSearchList
 }

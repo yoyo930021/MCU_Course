@@ -35,3 +35,7 @@ export const postShare = (courses) => {
   return axios.post("/share/", data);
 }
 
+export const getSearch = (ggdb,subject) => {
+  return axios.get('/course/' + ggdb + '/search/'+subject)
+}
+

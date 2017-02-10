@@ -27,7 +27,7 @@ export default new Router({
     }
   },
   {
-    path: '/token/:token',
+    path: '/share/:token',
     component: Share,
   }
   ]

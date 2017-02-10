@@ -54,22 +54,15 @@ var listParser = function ($, ggdb) {
                 classId: classId
             });
         }
-        var choose = {
-            url: "http://www.mcu.edu.tw/student/new-query/sel-query/query_menu.asp?gdb=" + ggdb,
-            jar: j,
-            encoding: "binary",
-            followAllRedirects: true
-        }
-        request.getAsync(choose).then(function () {
-            Promise.map(list, function (list) {
-                return fetchCourse(ggdb, list.subjectId, list.classId)
-            }, {
-                concurrency: 5
-            }).then(function (courses) {
-                resolve(courses)
-            }).catch(function (error) {
-                reject(error)
-            })
+        var cookie = request.cookie('ggdb='+ggdb);
+        var url = 'http://www.mcu.edu.tw/student/new-query/sel-query/';
+        j.setCookie(cookie, url);
+        Promise.map(list, function (list) {
+            return fetchCourse(ggdb, list.subjectId, list.classId)
+        }, {
+            concurrency: 5
+        }).then(function (courses) {
+            resolve(courses)
         }).catch(function (error) {
             reject(error)
         })
@@ -88,11 +81,16 @@ var fetchCourse = function (ggdb, subjectId, classId) {
                     reject(error);
                 })
             } else {
+                var formData = "sch=&dept1=&yr1=&dept2=&yr2=&dept3=&yr3=&sel=&courna="+urlencode(subjectId,"Big5")+"&teana=&wk1=&ssec1=&esec1=&wk2=&ssec2=&esec2=&wk3=&ssec3=&esec3=&wk4=&ssec4=&esec4=";
+                var contentLength = formData.length;
+
                 var result = {
                     url: "http://www.mcu.edu.tw/student/new-query/sel-query/qslist_1.asp",
-                    form: {
-                        "courna": subjectId
+                    headers: {
+                        'Content-Length': contentLength,
+                        'Content-Type': 'application/x-www-form-urlencoded'
                     },
+                    body: formData,
                     jar: j,
                     encoding: "binary",
                     followAllRedirects: true

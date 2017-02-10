@@ -84,6 +84,17 @@ router.get('/:ggdb/sport/:sch', function (req, res, next) {
     })
 });
 
+router.get('/:ggdb/search/:subject',function(req, res, next){
+    CourseListWebSpiders.getSearchList(req.params.ggdb, req.params.subject).then(function (result){
+        res.status(200).json(result);
+    }).catch(function (error) {
+        console.log(error);
+        res.status(500).json({
+            message: "伺服器錯誤"
+        });
+    })
+})
+
 router.get('/:ggdb/option/:type', function (req, res, next) {
     switch (req.params.type) {
         case "must":

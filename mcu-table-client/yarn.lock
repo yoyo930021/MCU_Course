@@ -3777,6 +3777,10 @@ vue-server-renderer@^2.1.8:
     de-indent "^1.0.2"
     he "^1.1.0"
 
+vue-social-sharing@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/vue-social-sharing/-/vue-social-sharing-1.1.1.tgz#ef116d9bfd98e02a70a12736070301731f50f814"
+
 vue-style-loader@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/vue-style-loader/-/vue-style-loader-1.0.0.tgz#abeb7bd0f46313083741244d3079d4f14449e049"
