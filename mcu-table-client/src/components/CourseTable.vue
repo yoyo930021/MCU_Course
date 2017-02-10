@@ -103,7 +103,7 @@
     min-width: 50px;
     border: 1px solid #eaeaea;
     background: #fff;
-    font-size: 0.5vh;
+    font-size: 1.5vh;
     text-overflow: ellipsis;
     overflow: hidden;
     word-wrap: break-word;
@@ -132,7 +132,7 @@
   }
   
   .blur {
-    filter:  sepia(100%) invert(80%) blur(0.5px);
+    filter:  sepia(100%) invert(80%) blur(0.1px);
   }
 
   .border{
