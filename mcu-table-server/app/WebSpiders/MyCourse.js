@@ -9,8 +9,6 @@ var j = request.jar()
 
 var get = function (ggdb, account, password) {
     return new Promise(function (resolve, reject) {
-        console.log(account)
-        console.log(password)
         var login = {
             url: "http://www.mcu.edu.tw/student/new-query/Chk_Pass_New_v1.asp",
             jar: j,
@@ -22,10 +20,10 @@ var get = function (ggdb, account, password) {
             //followAllRedirects: true
         }
         request.postAsync(login).then(function (res) {
-            var cookies = j.getCookies("http://www.mcu.edu.tw/student/new-query/Chk_Pass_New_v1.asp");
-            if (cookies[cookies.findIndex((value)=>{return (value!==undefined)?(value.toString().search("std%5Fno")!=null):false})].toString().search("error") != null) reject("帳號密碼錯誤")
+            var cookies = j.getCookieString("http://www.mcu.edu.tw/student/new-query/Chk_Pass_New_v1.asp");
+            if(cookies.split(";").filter((value)=>{return value.search("std%5Fno")!=-1})[0].search("error")!=-1) reject("帳號密碼錯誤")
             var result = {
-                url: "https://www.mcu.edu.tw/student/new-query/sel-5-2.asp?d=5",
+                url: "http://www.mcu.edu.tw/student/new-query/sel-5-2.asp?d=5",
                 jar: j,
                 encoding: "binary",
                 followAllRedirects: true
