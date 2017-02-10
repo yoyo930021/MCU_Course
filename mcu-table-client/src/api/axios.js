@@ -2,7 +2,7 @@ import axios from 'axios'
 import querystring from 'querystring';
 
 const defaults = {
-  baseURL: 'http://localhost:3000/'
+  baseURL: 'https://coapi.csie.mcu.edu.tw/'
 }
 
 Object.assign(axios.defaults, defaults)
