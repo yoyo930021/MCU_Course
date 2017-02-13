@@ -4,6 +4,7 @@ var router = express.Router();
 var CourseListWebSpiders = require('../app/WebSpiders/CourseList.js');
 var MyCourse = require('../app/WebSpiders/MyCourse.js');
 var CourseDrop = require('../app/WebSpiders/CourseDrop.js')
+var CourseComment = require('../app/WebSpiders/CourseComment.js')
 var redis = require('../app/Service/Redis.js');
 
 router.post('/:ggdb/my/', function (req, res, next) {
@@ -13,10 +14,10 @@ router.post('/:ggdb/my/', function (req, res, next) {
     }).catch(function (error) {
         console.log(error);
         if (error == "帳號密碼錯誤") {
-            redis.incr("login:"+req.body.account).then((value)=>{
-                redis.expire("login:"+req.body.account,21600).then();
+            redis.incr("login:" + req.body.account).then((value) => {
+                redis.expire("login:" + req.body.account, 21600).then();
             })
-            redis.get("login:"+req.body.account).then((value)=>{
+            redis.get("login:" + req.body.account).then((value) => {
                 res.status(401).json({
                     message: "帳號密碼錯誤",
                     step: value
@@ -84,8 +85,8 @@ router.get('/:ggdb/sport/:sch', function (req, res, next) {
     })
 });
 
-router.get('/:ggdb/search/:subject',function(req, res, next){
-    CourseListWebSpiders.getSearchList(req.params.ggdb, req.params.subject).then(function (result){
+router.get('/:ggdb/search/:subject', function (req, res, next) {
+    CourseListWebSpiders.getSearchList(req.params.ggdb, req.params.subject).then(function (result) {
         res.status(200).json(result);
     }).catch(function (error) {
         console.log(error);
@@ -109,53 +110,82 @@ router.get('/:ggdb/option/:type', function (req, res, next) {
             break;
         case "choose":
             CourseDrop.getChooseOptine(req.params.ggdb).then(function (result) {
-                    res.status(200).json(result)
-                })
-                .catch(function (error) {
-                    console.log(error);
-                    res.status(500).json({
-                        message: "伺服器錯誤"
-                    });
-                })
+                res.status(200).json(result)
+            }).catch(function (error) {
+                console.log(error);
+                res.status(500).json({
+                    message: "伺服器錯誤"
+                });
+            })
             break;
         case "common":
             CourseDrop.getCommonOptine(req.params.ggdb).then(function (result) {
-                    res.status(200).json(result)
-                })
-                .catch(function (error) {
-                    console.log(error);
-                    res.status(500).json({
-                        message: "伺服器錯誤"
-                    });
-                })
+                res.status(200).json(result)
+            }).catch(function (error) {
+                console.log(error);
+                res.status(500).json({
+                    message: "伺服器錯誤"
+                });
+            })
             break;
         case "teach":
             CourseDrop.getTeachOptine(req.params.ggdb).then(function (result) {
-                    res.status(200).json(result)
-                })
-                .catch(function (error) {
-                    console.log(error);
-                    res.status(500).json({
-                        message: "伺服器錯誤"
-                    });
-                })
+                res.status(200).json(result)
+            }).catch(function (error) {
+                console.log(error);
+                res.status(500).json({
+                    message: "伺服器錯誤"
+                });
+            })
             break;
         case "sport":
             CourseDrop.getSportOptine(req.params.ggdb).then(function (result) {
-                    res.status(200).json(result)
-                })
-                .catch(function (error) {
-                    console.log(error);
-                    res.status(500).json({
-                        message: "伺服器錯誤"
-                    });
-                })
+                res.status(200).json(result)
+            }).catch(function (error) {
+                console.log(error);
+                res.status(500).json({
+                    message: "伺服器錯誤"
+                });
+            })
             break;
         default:
             res.status(500).json({
                 message: "伺服器錯誤"
             });
     }
+})
+
+router.get('comment/:teacher/:subject', function (req, res, next) {
+    CourseComment.getCommentList(req.params.teacher, req.params.subject).then(function (result) {
+        res.status(200).json(result)
+    }).catch(function (error) {
+        console.log(error);
+        res.status(500).json({
+            message: "伺服器錯誤"
+        });
+    })
+})
+
+router.get('more/:id/:time', function (req, res, next) {
+    CourseComment.getMoreList(req.params.id, req.params.time).then(function (result) {
+        res.status(200).json(result)
+    }).catch(function (error) {
+        console.log(error);
+        res.status(500).json({
+            message: "伺服器錯誤"
+        });
+    })
+})
+
+router.get('reply/:id/:time', function (req, res, next) {
+    CourseComment.getReplyList(req.params.id, req.params.time).then(function (result) {
+        res.status(200).json(result)
+    }).catch(function (error) {
+        console.log(error);
+        res.status(500).json({
+            message: "伺服器錯誤"
+        });
+    })
 })
 
 module.exports = router;
