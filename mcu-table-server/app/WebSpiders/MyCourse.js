@@ -30,7 +30,7 @@ var get = function (ggdb, account, password) {
             }
             return request.getAsync(result);
         }).then(function (res) {
-            //console.log(res.body);
+            //console.log(iconv.decode(new Buffer(res.body, "binary"), "Big5"));
             let $ = cheerio.load(iconv.decode(new Buffer(res.body, "binary"), "Big5"))
             return listParser($, ggdb)
         }).then(function (result) {
@@ -44,9 +44,11 @@ var get = function (ggdb, account, password) {
 var listParser = function ($, ggdb) {
     return new Promise(function (resolve, reject) {
         var rows = $("table").eq(1).children("tr");
+        //console.log(rows.eq(3).text())
         var list = [];
-        for (var i = 2; i < rows.length; i += 2) {
-            var sub = rows.eq(i).children();
+        for (var i = 2; i < rows.length; i++) {
+            var sub = rows.eq(i).find("td");
+            //console.log(sub.html());
             var subjectId = sub.eq(1).text().trim().split("　")[0];
             var classId = sub.eq(0).text().trim();
             list.push({
@@ -54,6 +56,7 @@ var listParser = function ($, ggdb) {
                 classId: classId
             });
         }
+        //console.log(list);
         var cookie = request.cookie('ggdb='+ggdb);
         var url = 'http://www.mcu.edu.tw/student/new-query/sel-query/';
         j.setCookie(cookie, url);
