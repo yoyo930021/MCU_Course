@@ -51,10 +51,13 @@ var listParser = function ($, ggdb) {
             //console.log(sub.html());
             var subjectId = sub.eq(1).text().trim().split("　")[0];
             var classId = sub.eq(0).text().trim();
-            list.push({
-                subjectId: subjectId,
-                classId: classId
-            });
+            if(list.filter((element)=>{ return ((element.classId==classId)&&(element.subjectId==subjectId)) }).length==0){
+                list.push({
+                    subjectId: subjectId,
+                    classId: classId
+                });
+            }
+            
         }
         //console.log(list);
         var cookie = request.cookie('ggdb=' + ggdb);
@@ -63,12 +66,12 @@ var listParser = function ($, ggdb) {
         Promise.map(list, function (list) {
             return fetchCourse(ggdb, list.subjectId, list.classId)
         }, {
-                concurrency: 5
-            }).then(function (courses) {
-                resolve(courses)
-            }).catch(function (error) {
-                reject(error)
-            })
+            concurrency: 5
+        }).then(function (courses) {
+            resolve(courses)
+        }).catch(function (error) {
+            reject(error)
+        })
 
     })
 }
