@@ -12,11 +12,7 @@
             <v-container fluid>
               <v-row>
                 <div :class="grid(course.length,item.site)" v-for="item in course">
-                  <p class="pa-0 ma-0">
-                    {{item.id}}<br> {{item.name}}
-                    <br> {{item.teacher}}
-                    <br> {{item.site}}
-                  </p>
+                  <p class="pa-0 ma-0" v-html="courseHtml(item)"></p>
                 </div>
               </v-row>
             </v-container>
@@ -59,7 +55,7 @@
         if (site == "") return "black--text";
         for (var i = 0; i < sites.length; i++) {
           if (site.indexOf(sites[i]) != -1) {
-            return color[i]+" white--text ";
+            return color[i] + " white--text ";
             break;
           }
         }
@@ -71,9 +67,14 @@
           color += letters[Math.floor(Math.random() * 16)];
         }
         return color;
+      },
+      courseHtml(item) {
+        //return item.id + '<br>' + ((item.name.length > 6)&&item.name.substring(0,6).search("（")==-1 ? item.name.substring(0,6)+'<br>'+item.name.substring(6,item.name.length) : item.name) + '<br>' + item.teacher + '<br>' + item.site;
+        return item.id + '<br>' + item.name + '<br>' + item.teacher + '<br>' + item.site;
       }
     },
   }
+
 </script>
 <style scoped>
   .table {
@@ -94,12 +95,14 @@
     text-overflow: ellipsis;
     overflow: hidden;
     word-wrap: break-word;
+    word-break:break-all;
     white-space: nowrap;
   }
   
   .cell {
     display: table-cell;
     width: 13%;
+    max-width: 100px;
     min-width: 50px;
     border: 1px solid #eaeaea;
     background: #fff;
@@ -108,10 +111,8 @@
     overflow: hidden;
     word-wrap: break-word;
     white-space: nowrap;
-
-    -webkit-text-size-adjust:100%;
+    -webkit-text-size-adjust: 100%;
   }
-  
   
   .week-cell {
     display: table-cell;
@@ -134,11 +135,10 @@
   }
   
   .blur {
-    filter:  sepia(100%) invert(80%) blur(0.1px);
+    filter: sepia(100%) invert(80%) blur(0.1px);
   }
-
-  .border{
+  
+  .border {
     border: 2px dotted red;
   }
-
 </style>
