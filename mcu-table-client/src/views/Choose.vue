@@ -52,7 +52,7 @@
           }
           var self = this
           //console.log(secCourses);
-          for (var j = 1; j < 8; j++) {
+          for (var j = 0; j < 8; j++) {
             var courses = [];
             var filterCourses = self.choosedList.filter(function (element) {
               if (element.time.filter(function (ele) {
