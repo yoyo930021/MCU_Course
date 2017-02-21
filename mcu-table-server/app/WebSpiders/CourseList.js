@@ -206,7 +206,7 @@ var formatTime = function (data) {
         if (ele.match(":") != null) {
             //console.log(ele.split(":")[0].trim())
             var sub = {
-                day: parseInt(ele.split(":")[0].trim().split(" ")[1]),
+                day: (parseInt(ele.split(":")[0].trim().split(" ")[1])==0)?7:parseInt(ele.split(":")[0].trim().split(" ")[1]),
                 sec: []
             }
             ele.split(":")[1].trim().split(" ").map(function (element) {
