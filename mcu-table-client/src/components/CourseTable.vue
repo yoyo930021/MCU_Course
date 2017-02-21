@@ -70,7 +70,7 @@
       },
       courseHtml(item) {
         //return item.id + '<br>' + ((item.name.length > 6)&&item.name.substring(0,6).search("（")==-1 ? item.name.substring(0,6)+'<br>'+item.name.substring(6,item.name.length) : item.name) + '<br>' + item.teacher + '<br>' + item.site;
-        return item.id + '<br>' + item.name + '<br>' + (item.teacher!==undefined)?item.teacher:"" + '<br>' + (item.site!==undefined)?item.site:"";
+        return item.id + '<br>' + item.name + '<br>' + ((item.teacher!==undefined)?item.teacher:'') + '<br>' + ((item.site!==undefined)?item.site:'');
       }
     },
   }
