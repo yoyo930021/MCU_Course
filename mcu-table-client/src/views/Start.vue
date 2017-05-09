@@ -36,7 +36,7 @@
       return {
         options: [{
             value: 1,
-            text: '105學年度第1學期'
+            text: '106學年度第1學期'
           },
           {
             value: 2,
