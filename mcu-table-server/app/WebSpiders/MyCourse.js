@@ -148,7 +148,7 @@ var fetchParser = function ($, classId) {
                 note: (sub.eq(10).text() + " " + sub.eq(13).text()).trim()
             };
             if (sub.eq(4).find("a").length > 0) {
-                course.detail = sub.eq(4).find("a").attr("href").replace(/tyear=*&/,"tyear=105&");
+                course.detail = sub.eq(4).find("a").attr("href").replace(/tyear=*&/,"tyear=106&");
             }
             return course;
         }
