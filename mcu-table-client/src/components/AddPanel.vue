@@ -60,7 +60,7 @@
         <v-col md12 sm12>
           <course-list :headers="headers">
             <list-item v-for="(course,index) in filterList" :course="course" v-bind:key="course" class="" :note="note">
-              <v-btn icon class="teal--text" @click.native="add(index)" ripple>
+              <v-btn v-if="isShowAdd(course)" icon class="teal--text" @click.native="add(index)" ripple>
                 <v-icon>add</v-icon>
               </v-btn>
             </list-item>
@@ -77,7 +77,6 @@
     name: 'AddPanel',
     data () {
       return {
-        headers: ["制別", "科目<br>代號", "科目<br>名稱", "班級<br>代號", "選課/<br>開班<br>人數", "任課<br>教師", "時間", "地點", "選別", "學分", "備註"],
         choosedList: this.$store.state.choosedList,
         courseList: [],
         type: "",
@@ -125,6 +124,13 @@
       }
     },
     computed: {
+      headers: function () {
+        if(this.note){
+          return ["制別", "科目<br>代號", "科目<br>名稱", "班級<br>代號", "選課/<br>開班<br>人數", "任課<br>教師", "時間", "地點", "選別", "學分", "備註", "加入"]
+        }else{
+          return ["制別", "科目<br>代號", "科目<br>名稱", "班級<br>代號", "選課/<br>開班<br>人數", "任課<br>教師", "時間", "地點", "選別", "學分", "加入"]
+        }
+      },
       haveCourses: function () {
         var self = this;
         var haveCourses = {};
@@ -225,6 +231,9 @@
             })
           }
         }
+      },
+      isShowAdd(course){
+        return (this.choosedList.indexOf(course) === -1)
       },
     }
   }
