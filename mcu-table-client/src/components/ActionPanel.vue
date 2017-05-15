@@ -10,8 +10,10 @@
         <v-tabs-item id="tabs-1">
           <v-card class="ma-0">
             <v-card-text>
+              <p class="ma-0" style="display:inline;"> 目前總共學分數：{{ allCredit }}</p>
+              <div style="display:inline-block;width:50px;height:15px;"></div>
               <input type="checkbox" id="note" v-model="note">
-              <label for="checkbox">顯示備註</label>
+              <label for="checkbox"> 顯示備註</label>
               <course-list :headers="headers">
                 <list-item v-for="(course,index) in choosedList" :course="course" v-bind:key="course" :note="note">
                   <v-btn icon class="teal--text" @click.native="del(index)" ripple>
@@ -34,6 +36,8 @@
             <v-card-text>
               <h5 class="text-xs-center ma-0">結果</h5>
               <p class="ma-0">會分析退選哪些課，加選哪些課的結果</p>
+              <p class="ma-0" style="display:inline;"> 目前總共學分數：{{ allCredit }}</p>
+              <div style="display:inline-block;width:50px;height:15px;"></div>
               <input type="checkbox" id="note" v-model="note">
               <label for="checkbox">顯示備註</label>
               <course-list :headers="headers">
@@ -102,6 +106,9 @@
       },
       facebook: function () {
         return 'https://www.facebook.com/plugins/share_button.php?href='+this.urlToken+'&layout=button&mobile_iframe=true&width=52&height=20&appId'
+      },
+      allCredit: function () {
+        return this.choosedList.reduce((acc,val) => { return acc+val.credit },0)
       }
     },
     methods: {
