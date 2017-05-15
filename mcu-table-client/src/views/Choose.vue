@@ -7,14 +7,14 @@
         </v-col>
       </v-row>
       <v-row>
-        <v-col md6 xs12>
+        <v-col lg6 md12 sm12 xs12>
           <v-card class="ma-0">
             <v-card-text>
               <course-table :table="choosedTable"></course-table>
             </v-card-text>
           </v-card>
         </v-col>
-        <v-col md6 sm12>
+        <v-col lg6 md12 sm12 xs12>
           <v-card class="ma-0">
             <v-card-text>
               <action-panel></action-panel>
