@@ -233,7 +233,7 @@
         }
       },
       isShowAdd(course){
-        return (this.choosedList.indexOf(course) === -1)
+        return (this.choosedList.filter((element) => {return element.classId===course.classId&&element.subjectId===course.subjectId}).length===0)
       },
     }
   }
