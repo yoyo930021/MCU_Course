@@ -39,14 +39,14 @@
     margin: 0 1rem;
   }
   
-  h1 {
+  h1.text-md-left {
     letter-spacing: 1px;
     color: #fff;
     font-weight: 400;
     margin: 0;
     word-break: break-word;
     text-transform: uppercase;
-    font-size: 2rem;
+    font-size: 2rem !important;
   }
 
   
