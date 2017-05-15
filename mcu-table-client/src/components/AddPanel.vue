@@ -13,10 +13,10 @@
         <v-col md9 xs6 v-if="type=='must'||type=='choose'">
           <v-row>
             <v-col md4 sm12>
-              <v-select v-bind:options="deptOptions" id="dept" placeholder="選擇科系" name="dept" v-model.number="dept" key="dept" @change.native="getList(type)"></v-select>
+              <v-select v-bind:options="deptOptions" id="dept" placeholder="選擇科系" name="dept" v-model="dept" key="dept" @change.native="getList(type)"></v-select>
             </v-col>
             <v-col md4 sm12>
-              <v-select v-bind:options="yrOptions" id="yr" placeholder="選擇年級" name="yr" v-model.number="yr" key="yr" @change.native="getList(type)"></v-select>
+              <v-select v-bind:options="yrOptions" id="yr" placeholder="選擇年級" name="yr" v-model="yr" key="yr" @change.native="getList(type)"></v-select>
             </v-col>
             <v-col md4 sm12 class="pa-2">
               <input type="checkbox" id="filter" v-model="filter">
