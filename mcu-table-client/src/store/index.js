@@ -10,7 +10,9 @@ export default new Vuex.Store({
     ggdb:1,
     loginCourse: [],
     choosedList:[],
-    shareTable: []
+    shareTable: [],
+    hascomment: false,
+    commentUrl: ""
   },
 
   actions: {
@@ -40,6 +42,12 @@ export default new Vuex.Store({
     },
     setShare(state,data){
       state.shareTable = data;
+    },
+    setComment(state){
+      state.hascomment = !state.hascomment
+    },
+    setCommentUrl(state,data){
+      state.commentUrl = data
     }
   }
 })

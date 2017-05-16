@@ -56,7 +56,6 @@
         for (var i = 0; i < sites.length; i++) {
           if (site.indexOf(sites[i]) != -1) {
             return color[i] + " white--text ";
-            break;
           }
         }
       },

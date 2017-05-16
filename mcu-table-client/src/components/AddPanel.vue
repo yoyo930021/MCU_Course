@@ -2,23 +2,23 @@
   <div id='AddPanel'>
     <v-container fluid>
       <v-row>
-        <v-col md12 sm12>
+        <v-col md12 xs12>
           <v-progress-linear v-bind:indeterminate="loading" height="5" success class="ma-0"></v-progress-linear>
         </v-col>
       </v-row>
       <v-row>
-        <v-col md3 xs6>
+        <v-col md3 xs3>
           <v-select v-bind:options="typeOptions" id="type" placeholder="選擇類型" name="type" v-model="type" @change.native="chooseType"></v-select>
         </v-col>
-        <v-col md9 xs6 v-if="type=='must'||type=='choose'">
+        <v-col md9 xs9 v-if="type=='must'||type=='choose'">
           <v-row>
-            <v-col md4 sm12>
+            <v-col md4 xs8>
               <v-select v-bind:options="deptOptions" id="dept" placeholder="選擇科系" name="dept" v-model="dept" key="dept" @change.native="getList(type)"></v-select>
             </v-col>
-            <v-col md4 sm12>
+            <v-col md4 xs4>
               <v-select v-bind:options="yrOptions" id="yr" placeholder="選擇年級" name="yr" v-model="yr" key="yr" @change.native="getList(type)"></v-select>
             </v-col>
-            <v-col md4 sm12 class="pa-2">
+            <v-col md4 xs12 class="pa-2">
               <input type="checkbox" id="filter" v-model="filter">
               <label for="checkbox">過濾衝堂課程</label><br>
               <input type="checkbox" id="note" v-model="note">
@@ -26,12 +26,12 @@
             </v-col>
           </v-row>
         </v-col>
-        <v-col md9 xs6 v-if="type=='common'||type=='teach'||type=='sport'">
+        <v-col md9 xs9 v-if="type=='common'||type=='teach'||type=='sport'">
           <v-row>
-            <v-col md6 sm12>
+            <v-col md6 xs8>
               <v-select v-bind:options="schOptions" id="sch" placeholder="選擇校區" name="sch" v-model.number="sch" key="sch" @change.native="getList(type)"></v-select>
             </v-col>
-            <v-col md6 sm12 class="pa-2">
+            <v-col md6 xs4 class="pa-2">
               <input type="checkbox" id="filter" v-model="filter">
               <label for="checkbox">過濾衝堂課程</label><br>
               <input type="checkbox" id="note" v-model="note">
@@ -39,15 +39,15 @@
             </v-col>
           </v-row>
         </v-col>
-        <v-col md9 xs6  v-if="type=='search'">
+        <v-col md9 xs9  v-if="type=='search'">
           <v-row>
-            <v-col md6 sm8 class="pa-2">
+            <v-col md6 xs8 class="pa-2">
               <v-text-input id="subject" name="subject" placeholder="請輸入科目名稱" v-model="subject"></v-text-input>
             </v-col>
-            <v-col md2 sm4 class="pa-2">
+            <v-col md2 xs4 class="pa-2">
               <v-btn block v-ripple="{ class: 'white--text' }" warning @click.native="getList(type)">搜尋</v-btn>
             </v-col>
-            <v-col md4 sm12 class="pa-2">
+            <v-col md4 xs12 class="pa-2">
               <input type="checkbox" id="filter" v-model="filter">
               <label for="checkbox">過濾衝堂課程</label><br>
               <input type="checkbox" id="note" v-model="note">
@@ -62,6 +62,9 @@
             <list-item v-for="(course,index) in filterList" :course="course" v-bind:key="course" class="" :note="note">
               <v-btn v-if="isShowAdd(course)" icon class="teal--text" @click.native="add(index)" ripple>
                 <v-icon>add</v-icon>
+              </v-btn>
+              <v-btn icon class="teal--text" @click.native.stop="comment(course)" ripple>
+                <v-icon>comment</v-icon>
               </v-btn>
             </list-item>
           </course-list>
@@ -120,15 +123,17 @@
         ],
         deptOptions: [],
         yrOptions: [],
-        schOptions: []
+        schOptions: [],
+        hascomment: this.$store.state.hascomment,
+        commentUrl: this.$store.state.commentUrl
       }
     },
     computed: {
       headers: function () {
         if(this.note){
-          return ["制別", "科目<br>代號", "科目<br>名稱", "班級<br>代號", "選課/<br>開班<br>人數", "任課<br>教師", "時間", "地點", "選別", "學分", "備註", "加入"]
+          return ["制別", "班級代號<br>科目代號", "科目<br>名稱", "選課/<br>開班<br>人數", "任課<br>教師", "時間", "地點", "學分", "備註", "加入 / 金手指"]
         }else{
-          return ["制別", "科目<br>代號", "科目<br>名稱", "班級<br>代號", "選課/<br>開班<br>人數", "任課<br>教師", "時間", "地點", "選別", "學分", "加入"]
+          return ["制別", "班級代號<br>科目代號", "科目<br>名稱",  "選課/<br>開班<br>人數", "任課<br>教師", "時間", "地點", "學分", "加入 / 金手指"]
         }
       },
       haveCourses: function () {
@@ -235,11 +240,14 @@
       isShowAdd(course){
         return (this.choosedList.filter((element) => {return element.classId===course.classId&&element.subjectId===course.subjectId}).length===0)
       },
+      comment(course){
+        this.$emit('openComment',"https://goldenfinger.csie.mcu.edu.tw/search/advanced?by_course="+course.subjectName+"&by_instructor="+course.teacher[0]+"&by_courseID=")
+      },
     }
   }
 
 </script>
 
 <style scoped>
-
+  
 </style>

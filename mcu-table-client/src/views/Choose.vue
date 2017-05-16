@@ -17,12 +17,22 @@
         <v-col lg6 md12 sm12 xs12>
           <v-card class="ma-0">
             <v-card-text>
-              <action-panel></action-panel>
+              <action-panel @openComment="openComment"></action-panel>
             </v-card-text>
           </v-card>
         </v-col>
       </v-row>
     </v-container>
+    <v-modal id="hascomment" v-model="hascomment">
+      <v-card>
+        <v-card-text>
+          <div role="close-modal">
+            <v-btn floating="floating" primary dark outline @click.native.stop="hascomment = !hascomment" class="mr-3">X</v-btn>
+          </div>
+          <iframe :src="commentUrl"></iframe>
+        </v-card-text>
+      </v-card>
+    </v-modal>
   </div>
 </template>
 <script>
@@ -31,7 +41,9 @@
     data() {
       return {
         choosedList: this.$store.state.choosedList,
-        alert:true
+        alert:true,
+        hascomment: false,
+        commentUrl: ""
       }
     },
     mounted () {
@@ -104,10 +116,47 @@
           else temp.site = course.site[teacherI];
           return temp;
         }
+      },
+      openComment(url){
+        this.commentUrl = url
+        this.hascomment = true
+      },
+    },
+    watch: {
+      hascomment: function(state){
+        if(state){
+          document.getElementsByTagName("html")[0].style.overflowY = "hidden"
+        }else{
+          document.getElementsByTagName("html")[0].style.overflowY = "scroll"
+        }
       }
     }
   }
 </script>
-<style scoped>
-
+<style  lang="stylus">
+  .modal--active
+      max-height: 82vh
+      background-color: white
+      @media screen and (max-width: 500px)
+        width: 100vw
+        height: 100vh
+        max-width: 100vw
+        max-height: 100vh
+        overflow-y: scroll
+        overflow-x: hidden
+  iframe
+    width: 35vw
+    height: 82vh
+    border:none
+    @media screen and (max-width: 500px)
+      padding-right: 5vw
+      width: 100vw
+      height: 100vh
+  [role="close-modal"]
+    position: absolute
+    background-color: white
+    float: right
+    right: 0
+    z-index: 999
+    border-radius: 50px
 </style>

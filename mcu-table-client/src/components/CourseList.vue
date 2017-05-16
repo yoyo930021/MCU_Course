@@ -4,7 +4,6 @@
       <thead>
         <tr class="font">
           <th v-for="header in headers" v-html="header"></th>
-          <th></th>
         </tr>
       </thead>
       <transition-group name="list" tag="tbody">
@@ -27,8 +26,8 @@
   
   .font td,
   .font th {
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
     padding-left: 1px;
     padding-right: 1px;
     text-align: center;
@@ -36,7 +35,7 @@
   
   .list-item {
     display: inline-block;
-    margin-right: 10px;
+    margin-right: 5px;
   }
   
   .list-enter-active,
