@@ -126,8 +126,10 @@
       hascomment: function(state){
         if(state){
           document.getElementsByTagName("html")[0].style.overflowY = "hidden"
+          document.getElementsByTagName("body")[0].style.overflowY = "hidden"
         }else{
           document.getElementsByTagName("html")[0].style.overflowY = "scroll"
+          document.getElementsByTagName("body")[0].style.overflowY = "scroll"
         }
       }
     }
