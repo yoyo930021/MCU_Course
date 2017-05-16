@@ -1,13 +1,13 @@
 <template>
   <header>
-    <v-navbar>
+    <v-toolbar>
       <!--<v-btn v-side-bar:mainsidebar="" floating class="side-icon hidden-md-and-up transparent z-depth-0" ripple >
         <v-icon>menu</v-icon>
       </v-btn>-->
       <div class="navbar__side-title">
         <h1 class="text-md-left">{{title}}</h1>
       </div>
-    </v-navbar>
+    </v-toolbar>
   </header>
 </template>
 

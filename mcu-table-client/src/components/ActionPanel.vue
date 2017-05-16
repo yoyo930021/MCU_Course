@@ -1,13 +1,10 @@
 <template>
   <div id='ActionPanel'>
     <v-tabs id="tabs" grow>
-      <v-tabs-tabs>
-        <v-tab-item :item="{ text: '已選課程', href: '#tabs-1' }" ripple></v-tab-item>
-        <v-tab-item :item="{ text: '加入課程', href: '#tabs-2' }" ripple></v-tab-item>
-        <v-tab-item :item="{ text: '結果', href: '#tabs-3' }" ripple></v-tab-item>
-      </v-tabs-tabs>
-      <v-tabs-items>
-        <v-tabs-item id="tabs-1">
+        <v-tab-item href="#tabs-1" key="1" ripple slot="activators">已選課程</v-tab-item>
+        <v-tab-item href="#tabs-2" key="2" ripple slot="activators">加入課程</v-tab-item>
+        <v-tab-item href="#tabs-3" key="3" ripple slot="activators">結果</v-tab-item>
+        <v-tab-content  id="tabs-1" slot="content" key="1">
           <v-card class="ma-0">
             <v-card-text>
               <p class="ma-0" style="display:inline;"> 目前總共學分數：{{ allCredit }}</p>
@@ -23,15 +20,15 @@
               </course-list>
             </v-card-text>
           </v-card>
-        </v-tabs-item>
-        <v-tabs-item id="tabs-2">
+        </v-tab-content>
+        <v-tab-content id="tabs-2" slot="content" key="2">
           <v-card class="ma-0">
             <v-card-text>
-              <add-panel></add-panel>
+              <add-panel @openComment="openComment"></add-panel>
             </v-card-text>
           </v-card>
-        </v-tabs-item>
-        <v-tabs-item id="tabs-3">
+        </v-tab-content>
+        <v-tab-content id="tabs-3" slot="content" key="3">
           <v-card class="ma-0">
             <v-card-text>
               <h5 class="text-xs-center ma-0">結果</h5>
@@ -66,8 +63,7 @@
               </v-container>
             </v-card-text>
           </v-card>
-        </v-tabs-item>
-      </v-tabs-items>
+        </v-tab-content >
     </v-tabs>
   </div>
 </template>
@@ -86,9 +82,9 @@
     computed: {
       headers: function () {
         if(this.note){
-          return ["制別", "科目<br>代號", "科目<br>名稱", "班級<br>代號", "選課/<br>開班<br>人數", "任課<br>教師", "時間", "地點", "選別", "學分", "備註", "刪除"]
+          return ["制別", "班級代號<br>科目代號", "科目<br>名稱", "選課/<br>開班<br>人數", "任課<br>教師", "時間", "地點", "學分", "備註", "加入"]
         }else{
-          return ["制別", "科目<br>代號", "科目<br>名稱", "班級<br>代號", "選課/<br>開班<br>人數", "任課<br>教師", "時間", "地點", "選別", "學分", "刪除"]
+          return ["制別", "班級代號<br>科目代號", "科目<br>名稱",  "選課/<br>開班<br>人數", "任課<br>教師", "時間", "地點", "學分", "加入"]
         }
       },
       diffList: function () {
@@ -126,12 +122,19 @@
           this.disabled = false;
           this.$vuetify.toast.create(...["請求失敗，請檢查網路狀態。", "bottom"])
         })
-      }
+      },
+      openComment(url){
+        this.$emit('openComment',url)
+      },
     }
   }
 
 </script>
 <style scoped>
+  #ActionPanel {
+    min-height: 800px;
+  }
+
   .through {
     text-decoration: line-through;
   }
