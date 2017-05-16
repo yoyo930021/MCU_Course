@@ -26,7 +26,7 @@
     },
 
     mounted() {
-      this.$vuetify.init()
+      
     }
   }
 </script>
