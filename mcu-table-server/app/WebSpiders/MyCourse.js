@@ -16,7 +16,8 @@ var get = function (ggdb, account, password) {
                 "t_tea_no": account,
                 "t_tea_pass": password
             },
-            encoding: "binary"
+            encoding: "binary",
+            timeout: 5000
             //followAllRedirects: true
         }
         request.postAsync(login).then(function (res) {
@@ -26,7 +27,8 @@ var get = function (ggdb, account, password) {
                 url: "http://www.mcu.edu.tw/student/new-query/sel-5-2.asp?d=5",
                 jar: j,
                 encoding: "binary",
-                followAllRedirects: true
+                followAllRedirects: true,
+                timeout: 5000
             }
             return request.getAsync(result);
         }).then(function (res) {
