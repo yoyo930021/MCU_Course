@@ -9,10 +9,10 @@ var j = request.jar()
 var getMustOptine = function (ggdb) {
     return new Promise(function (resolve, reject) {
         var cookie = request.cookie('ggdb='+ggdb);
-        var url = 'http://www.mcu.edu.tw/student/new-query/sel-query/';
+        var url = 'https://www.mcu.edu.tw/student/new-query/sel-query/';
         j.setCookie(cookie, url);
         var result = {
-            url: "http://www.mcu.edu.tw/student/new-query/sel-query/query_2_up.asp",
+            url: "https://www.mcu.edu.tw/student/new-query/sel-query/query_2_up.asp",
             jar: j,
             encoding: "binary",
             followAllRedirects: true
@@ -29,10 +29,10 @@ var getMustOptine = function (ggdb) {
 var getChooseOptine = function (ggdb) {
     return new Promise(function (resolve, reject) {
         var cookie = request.cookie('ggdb='+ggdb);
-        var url = 'http://www.mcu.edu.tw/student/new-query/sel-query/';
+        var url = 'https://www.mcu.edu.tw/student/new-query/sel-query/';
         j.setCookie(cookie, url);
             var result = {
-                url: "http://www.mcu.edu.tw/student/new-query/sel-query/query_3_up.asp",
+                url: "https://www.mcu.edu.tw/student/new-query/sel-query/query_3_up.asp",
                 jar: j,
                 encoding: "binary",
                 followAllRedirects: true
@@ -49,10 +49,10 @@ var getChooseOptine = function (ggdb) {
 var getCommonOptine = function (ggdb) {
     return new Promise(function (resolve, reject) {
         var cookie = request.cookie('ggdb='+ggdb);
-        var url = 'http://www.mcu.edu.tw/student/new-query/sel-query/';
+        var url = 'https://www.mcu.edu.tw/student/new-query/sel-query/';
         j.setCookie(cookie, url);
         var result = {
-            url: "http://www.mcu.edu.tw/student/new-query/sel-query/query_4_up.asp",
+            url: "https://www.mcu.edu.tw/student/new-query/sel-query/query_4_up.asp",
             jar: j,
             encoding: "binary",
             followAllRedirects: true
@@ -69,10 +69,10 @@ var getCommonOptine = function (ggdb) {
 var getTeachOptine = function (ggdb) {
     return new Promise(function (resolve, reject) {
         var cookie = request.cookie('ggdb='+ggdb);
-        var url = 'http://www.mcu.edu.tw/student/new-query/sel-query/';
+        var url = 'https://www.mcu.edu.tw/student/new-query/sel-query/';
         j.setCookie(cookie, url);
         var result = {
-            url: "http://www.mcu.edu.tw/student/new-query/sel-query/query_5_up.asp",
+            url: "https://www.mcu.edu.tw/student/new-query/sel-query/query_5_up.asp",
             jar: j,
             encoding: "binary",
             followAllRedirects: true
@@ -89,10 +89,10 @@ var getTeachOptine = function (ggdb) {
 var getSportOptine = function (ggdb) {
     return new Promise(function (resolve, reject) {
         var cookie = request.cookie('ggdb='+ggdb);
-        var url = 'http://www.mcu.edu.tw/student/new-query/sel-query/';
+        var url = 'https://www.mcu.edu.tw/student/new-query/sel-query/';
         j.setCookie(cookie, url);
         var result = {
-            url: "http://www.mcu.edu.tw/student/new-query/sel-query/query_10_up.asp",
+            url: "https://www.mcu.edu.tw/student/new-query/sel-query/query_10_up.asp",
             jar: j,
             encoding: "binary",
             followAllRedirects: true

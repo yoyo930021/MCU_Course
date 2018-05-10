@@ -10,7 +10,7 @@ var j = request.jar()
 var get = function (ggdb, account, password) {
     return new Promise(function (resolve, reject) {
         var login = {
-            url: "http://www.mcu.edu.tw/student/new-query/Chk_Pass_New_v1.asp",
+            url: "https://www.mcu.edu.tw/student/new-query/Chk_Pass_New_v1.asp",
             jar: j,
             form: {
                 "t_tea_no": account,
@@ -24,7 +24,7 @@ var get = function (ggdb, account, password) {
             var cookies = j.getCookieString("http://www.mcu.edu.tw/student/new-query/Chk_Pass_New_v1.asp");
             if (cookies.split(";").filter((value) => { return value.search("std%5Fno") != -1 })[0].search("error") != -1) reject("帳號密碼錯誤")
             var result = {
-                url: "http://www.mcu.edu.tw/student/new-query/sel-5-2.asp?d=5",
+                url: "https://www.mcu.edu.tw/student/new-query/sel-5-2.asp?d=5",
                 jar: j,
                 encoding: "binary",
                 followAllRedirects: true,
@@ -63,7 +63,7 @@ var listParser = function ($, ggdb) {
         }
         //console.log(list);
         var cookie = request.cookie('ggdb=' + ggdb);
-        var url = 'http://www.mcu.edu.tw/student/new-query/sel-query/';
+        var url = 'https://www.mcu.edu.tw/student/new-query/sel-query/';
         j.setCookie(cookie, url);
         Promise.map(list, function (list) {
             return fetchCourse(ggdb, list.subjectId, list.classId)
@@ -93,7 +93,7 @@ var fetchCourse = function (ggdb, subjectId, classId) {
                 var contentLength = formData.length;
 
                 var result = {
-                    url: "http://www.mcu.edu.tw/student/new-query/sel-query/qslist_1.asp",
+                    url: "https://www.mcu.edu.tw/student/new-query/sel-query/qslist_1.asp",
                     headers: {
                         'Content-Length': contentLength,
                         'Content-Type': 'application/x-www-form-urlencoded'
