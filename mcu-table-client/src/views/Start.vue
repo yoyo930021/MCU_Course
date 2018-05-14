@@ -14,7 +14,7 @@
                     <v-select v-bind:options="options" id="ggdb" placeholder="選擇學期" name="ggdb" v-model.number="ggdb" :disabled="disabled"></v-select>
                     <v-text-input id="account" name="account" placeholder="請輸入學校系統帳號" v-model="account" :disabled="disabled"></v-text-input>
                     <v-text-input id="password" type="password" name="password" placeholder="請輸入學校系統密碼" v-model="password" :disabled="disabled"></v-text-input>
-                    <textarea name="" id="" class="text-xs-left white" :disabled="disabled">{{note}}</textarea>
+                    <textarea name="" id="" class="text-xs-left white" :disabled="disabled" v-model="note"></textarea>
                     <br><br>
                     <v-btn block ripple outline info @click.native="login" :disabled="disabled" :loading="disabled">同意並登入</v-btn>
                     <v-btn block ripple flat style="margin-top: 10px;" @click.native="nologin" :disabled="disabled">同意並使用空白課表</v-btn>
@@ -36,11 +36,11 @@
       return {
         options: [{
             value: 1,
-            text: '第1學期'
+            text: '107學年第1學期'
           },
           {
             value: 2,
-            text: '第2學期'
+            text: '106學年第2學期'
           },
           {
             value: 8,
