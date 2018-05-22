@@ -241,7 +241,7 @@
         return (this.choosedList.filter((element) => {return element.classId===course.classId&&element.subjectId===course.subjectId}).length===0)
       },
       comment(course){
-        this.$emit('openComment',"http://goldenfinger.mcu.mingtsay.tech/search/advanced?by_course="+course.subjectName+"&by_instructor="+course.teacher[0]+"&by_courseID=")
+        this.$emit('openComment',"https://suankho.com/courses/search/?q="+course.subjectName)
       },
     }
   }

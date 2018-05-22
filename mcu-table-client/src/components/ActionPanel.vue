@@ -98,7 +98,7 @@
         return result;
       },
       urlToken: function () {
-        return 'https://course.csie.mcu.edu.tw/share/' + this.token;
+        return 'https://course.mcuisc.club/share/' + this.token;
       },
       facebook: function () {
         return 'https://www.facebook.com/plugins/share_button.php?href='+this.urlToken+'&layout=button&mobile_iframe=true&width=52&height=20&appId'
