@@ -7,18 +7,18 @@
   },
   "dependencies": {
     "bluebird": "^3.5.1",
-    "body-parser": "~1.15.2",
+    "body-parser": "^1.18.3",
     "cheerio": "^0.22.0",
     "cookie-parser": "~1.4.3",
     "debug": "~2.2.0",
-    "express": "^4.14.1",
+    "express": "^4.16.4",
     "iconv-lite": "^0.4.19",
     "ioredis": "^2.5.0",
     "js-sha256": "^0.5.0",
     "mongoose": "^4.13.6",
-    "morgan": "~1.7.0",
-    "request": "^2.83.0",
-    "serve-favicon": "~2.3.0",
+    "morgan": "^1.9.1",
+    "request": "^2.88.0",
+    "serve-favicon": "^2.5.0",
     "urlencode": "^1.1.0"
   }
 }
